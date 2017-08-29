@@ -132,6 +132,9 @@ body, .app {
 .book-authors {
   color: #999;
 }
+.book-author {
+  margin: 0;
+}
 
 .book-top {
   position: relative;
