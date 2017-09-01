@@ -1,8 +1,8 @@
 import React from 'react'
-
 import './App.css'
-//import SearchBooks from './SearchBooks'
+import SearchBooks from './SearchBooks'
 import BookShelves from './BookShelves'
+import {Route} from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
@@ -18,17 +18,10 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <BookShelves/>
-            </div>
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
-          </div>
+        <Route exact path="/" render={() => (
+           <BookShelves/>
+        )}/>
+        <Route path="/search" component={SearchBooks}/>
       </div>
     )
   }
