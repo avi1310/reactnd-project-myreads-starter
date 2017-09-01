@@ -1,4 +1,5 @@
 import  React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 function camelize(str) {
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
@@ -8,8 +9,11 @@ function camelize(str) {
 
 class BookShelf extends Component {
 
-
-
+    static propTypes = {
+        books : PropTypes.array.isRequired,
+        type: PropTypes.string.isRequired,
+        onChangeShelf: PropTypes.func.isRequired
+    }
     render() {
         const shelfType = camelize(this.props.type)
         let booksInShelf = this.props.books.filter((book) =>
@@ -23,7 +27,7 @@ class BookShelf extends Component {
                     <div className="bookshelf-books">
                     <ol className="books-grid">
                     {booksInShelf.map((book) =>
-                        <li key={book.title}>
+                        <li key={book.id}>
                             <div className="book">
                                 <div className="book-top">
                                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
