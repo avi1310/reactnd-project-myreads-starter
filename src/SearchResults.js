@@ -15,8 +15,10 @@ class SearchResults extends Component {
             books = this.props.books
             booksInShelf.forEach((element) => {
                 books.forEach((book) => {
-                    if (element.id === book.id) {
-                        book.shelf = element.shelf
+                    if(!book.shelf) {
+                        if (element.id === book.id) {
+                            book.shelf = element.shelf
+                        }
                     }
                 })
             })

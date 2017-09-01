@@ -38,11 +38,11 @@ class SearchBooks extends Component {
                 books[index].shelf = updatedShelf
             }
         })
-        BooksAPI.getAll().then((booksInShelf) => {
-            this.setState({ booksInShelf })
-        })
-        this.setState({books})
         BooksAPI.update(book, updatedShelf)
+
+        BooksAPI.getAll().then((booksInShelf) => {
+            this.setState({booksInShelf, books})
+        })
     }
 
     render() {
